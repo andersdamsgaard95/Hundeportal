@@ -7,10 +7,10 @@
     font-size: 18px;
 }
 
-/*BODY*/
+/*BODY-------------------------------------------*/
 body {
     display: grid;
-    grid-template-rows: 100px 1fr 100px;
+    grid-template-rows: 100px 1fr auto;
 
         header {
             grid-row: 1/2;
@@ -25,7 +25,7 @@ body {
         }
 }
 
-/*HEADER*/
+/*HEADER-----------------------------------------*/
 header {
     display: grid;
     grid-template-columns: 1fr 200px 1fr;
@@ -61,12 +61,13 @@ header {
         }
 }
 
-/*MAIN*/
+/*MAIN-----------------------------------------------*/
 main {
     @include partial.flex-column($gap:100px);
 }
 
-/*FORSIDE*/
+/*FORSIDE--------------------------------------------*/
+/*Hero*/
 .forside-hero {
     @include partial.grid;
 
@@ -85,6 +86,7 @@ main {
         }
 }
 
+/*Sundhed*/
 .forside-sundhed {
     @include partial.grid;
 
@@ -103,7 +105,128 @@ main {
         }
 }
 
-/*FONT SIZES*/
+/*Træning*/
+.forside-træning {
+    @include partial.grid;
+
+        div:nth-of-type(1) {
+            grid-column: 1/2;
+            height: 500px;
+            background-color: orange;
+        }
+
+        div:nth-of-type(2) {
+            grid-column: 2/3;
+            @include partial.flex-column($gap:20px);
+            justify-content: center;
+            padding-left: partial.$padding-gap;
+            padding-right: partial.$padding-sides;
+        }
+}
+
+/*Sundhed underside-----------------------------------*/
+/*Hero*/
+.sundhed-hero {
+    @include partial.grid;
+
+        div:nth-of-type(1) {
+            grid-column: 1/2;
+            @include partial.flex-column($gap:20px);
+            justify-content: center;
+            padding-right: partial.$padding-gap;
+            padding-left: partial.$padding-sides;
+        }
+
+        div:nth-of-type(2) {
+            grid-column: 2/3;
+            height: 500px;
+            background-color: orange;
+        }
+}
+
+.sundhed-mad {
+    @include partial.grid;
+    
+    div:nth-of-type(1) {
+        grid-column: 1/2;
+        height: 500px;
+        background-color: orange;
+    }
+
+    div:nth-of-type(2) {
+        grid-column: 2/3;
+        @include partial.flex-column($gap:20px);
+        justify-content: center;
+        padding-left: partial.$padding-gap;
+        padding-right: partial.$padding-sides;
+    }
+}
+
+.sundhed-aktiv {
+    @include partial.grid;
+
+        div:nth-of-type(1) {
+            grid-column: 1/2;
+            @include partial.flex-column($gap:20px);
+            justify-content: center;
+            padding-right: partial.$padding-gap;
+            padding-left: partial.$padding-sides;
+        }
+
+        div:nth-of-type(2) {
+            grid-column: 2/3;
+            height: 500px;
+            background-color: orange;
+        }
+}
+
+/*About----------------------------------------------*/
+.about-hero {
+    div:nth-of-type(1) {
+        margin-left: partial.$padding-sides;
+        margin-right: partial.$padding-sides;
+        background-color: orange;
+        height: 500px;
+    }
+
+    div:nth-of-type(2) {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: -100px;
+
+            p {
+                max-width: 500px;
+                background-color: red;
+            }
+
+    }
+}
+
+/*Footer---------------------------------------------*/
+footer {
+    @include partial.grid;
+    padding-top: partial.$padding-gap;
+    padding-bottom: partial.$padding-gap;
+
+        nav:nth-of-type(1) {
+            grid-column: 1/2;
+            @include partial.flex-column($gap:20px);
+            padding-left: partial.$padding-sides;
+            padding-right: partial.$padding-gap;
+            justify-content: start;
+        }
+
+        nav:nth-of-type(2) {
+            grid-column: 2/3;
+            @include partial.flex-column($gap:20px);
+            padding-right: partial.$padding-sides;
+            padding-left: partial.$padding-gap;
+            justify-content: start;
+        }
+}
+
+/*FONT SIZES-----------------------------------------*/
 h1 {
     font-family: "Diplomata SC", serif;
     font-weight: 400;
@@ -111,13 +234,14 @@ h1 {
     font-size: 1.4rem;
 }
 
-/*CLASSES*/
+/*CLASSES------------------------------------------*/
 .cta {
     background-color: black;
     color: white;
     width: fit-content;
     padding: 10px 30px 10px 30px;
     white-space: nowrap;
+    text-decoration: none;
 
         &:hover {
             background-color: #AB6A08;
