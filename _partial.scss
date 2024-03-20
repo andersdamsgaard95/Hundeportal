@@ -1,0 +1,15 @@
+$padding-sides: 100px;
+$padding-gap: 50px;
+$padding-top: 50px;
+$padding-bottom: 50px;
+
+@mixin flex-column($gap:50px, $flex-direction: column) {  
+    display: flex;
+    flex-direction: $flex-direction;
+    gap: $gap;
+}
+
+@mixin grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
