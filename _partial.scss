@@ -13,3 +13,10 @@ $padding-bottom: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+@mixin mobil-grid {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+}

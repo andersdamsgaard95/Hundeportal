@@ -24,9 +24,22 @@ body footer {
 /*HEADER-----------------------------------------*/
 header {
   display: grid;
-  grid-template-columns: 1fr 200px 1fr;
+  grid-template-columns: 1fr auto 1fr;
   padding-left: 100px;
   padding-right: 100px;
+  background-color: rgb(211, 57, 57);
+}
+@media screen and (max-width: 1100px) {
+  header {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 700px) {
+  header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 header nav:nth-of-type(1) {
   grid-column: 1/2;
@@ -35,14 +48,46 @@ header nav:nth-of-type(1) {
   gap: 40px;
   align-items: center;
 }
+header nav:nth-of-type(1) a {
+  text-decoration: none;
+  color: white;
+}
+header nav:nth-of-type(1) a:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 900px) {
+  header nav:nth-of-type(1) a {
+    display: none;
+  }
+}
+header nav:nth-of-type(1) .underline {
+  text-decoration: underline;
+}
+header nav:nth-of-type(1) img {
+  width: 30px;
+  visibility: hidden;
+}
+@media screen and (max-width: 900px) {
+  header nav:nth-of-type(1) img {
+    visibility: visible;
+  }
+}
 header .logo {
   grid-column: 2/3;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: auto;
 }
 header .logo img {
-  width: 100%;
+  width: 200px;
   height: 80px;
+}
+@media screen and (max-width: 500px) {
+  header .logo img {
+    height: 40px;
+    width: 100px;
+  }
 }
 header nav:nth-of-type(2) {
   grid-column: 3/4;
@@ -56,9 +101,7 @@ header nav:nth-of-type(2) img {
 
 /*MAIN-----------------------------------------------*/
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
+  /*@include partial.flex-column($gap:100px);*/
 }
 
 /*FORSIDE--------------------------------------------*/
@@ -66,11 +109,21 @@ main {
 .forside-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: #9cffa4;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .forside-hero div:nth-of-type(1) {
   grid-column: 1/2;
   height: 500px;
-  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.forside-hero div:nth-of-type(1) img {
+  height: 100%;
+  position: absolute;
 }
 .forside-hero div:nth-of-type(2) {
   grid-column: 2/3;
@@ -81,11 +134,41 @@ main {
   padding-left: 50px;
   padding-right: 100px;
 }
+@media screen and (max-width: 1100px) {
+  .forside-hero div:nth-of-type(2) {
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .forside-hero div:nth-of-type(2) {
+    padding-left: 10px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .forside-hero {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .forside-hero div:nth-of-type(1) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    height: 300px;
+  }
+  .forside-hero div:nth-of-type(2) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+}
 
 /*Sundhed*/
 .forside-sundhed {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: rgb(181, 181, 248);
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .forside-sundhed div:nth-of-type(1) {
   grid-column: 1/2;
@@ -94,23 +177,56 @@ main {
   gap: 20px;
   justify-content: center;
   padding-right: 50px;
-  padding-left: 100px;
 }
 .forside-sundhed div:nth-of-type(2) {
   grid-column: 2/3;
   height: 500px;
-  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.forside-sundhed div:nth-of-type(2) img {
+  height: 100%;
+  position: absolute;
+}
+@media screen and (max-width: 700px) {
+  .forside-sundhed {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .forside-sundhed div:nth-of-type(1) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  .forside-sundhed div:nth-of-type(2) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    height: 300px;
+  }
 }
 
 /*Træning*/
 .forside-træning {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #ffff82;
 }
 .forside-træning div:nth-of-type(1) {
   grid-column: 1/2;
   height: 500px;
-  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.forside-træning div:nth-of-type(1) img {
+  height: 100%;
+  position: absolute;
 }
 .forside-træning div:nth-of-type(2) {
   grid-column: 2/3;
@@ -119,7 +235,24 @@ main {
   gap: 20px;
   justify-content: center;
   padding-left: 50px;
-  padding-right: 100px;
+}
+@media screen and (max-width: 700px) {
+  .forside-træning {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .forside-træning div:nth-of-type(1) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    height: 300px;
+  }
+  .forside-træning div:nth-of-type(2) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    padding-left: 0;
+  }
 }
 
 /*Sundhed underside-----------------------------------*/
@@ -127,6 +260,9 @@ main {
 .sundhed-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: #9cffa4;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .sundhed-hero div:nth-of-type(1) {
   grid-column: 1/2;
@@ -137,20 +273,61 @@ main {
   padding-right: 50px;
   padding-left: 100px;
 }
+@media screen and (max-width: 900px) {
+  .sundhed-hero div:nth-of-type(1) {
+    padding-left: 50px;
+  }
+}
 .sundhed-hero div:nth-of-type(2) {
   grid-column: 2/3;
   height: 500px;
-  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.sundhed-hero div:nth-of-type(2) img {
+  height: 100%;
+}
+@media screen and (max-width: 700px) {
+  .sundhed-hero {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .sundhed-hero div:nth-of-type(1) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .sundhed-hero div:nth-of-type(2) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    height: 300px;
+  }
 }
 
 .sundhed-mad {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: rgb(181, 181, 248);
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .sundhed-mad div:nth-of-type(1) {
   grid-column: 1/2;
   height: 500px;
-  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.sundhed-mad div:nth-of-type(1) img {
+  height: 100%;
+  position: absolute;
 }
 .sundhed-mad div:nth-of-type(2) {
   grid-column: 2/3;
@@ -159,12 +336,35 @@ main {
   gap: 20px;
   justify-content: center;
   padding-left: 50px;
-  padding-right: 100px;
+}
+@media screen and (max-width: 700px) {
+  .sundhed-mad {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .sundhed-mad div:nth-of-type(1) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    padding-right: 0;
+    padding-left: 0;
+    height: 300px;
+  }
+  .sundhed-mad div:nth-of-type(2) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }
 
 .sundhed-aktiv {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #ffff82;
 }
 .sundhed-aktiv div:nth-of-type(1) {
   grid-column: 1/2;
@@ -173,20 +373,71 @@ main {
   gap: 20px;
   justify-content: center;
   padding-right: 50px;
-  padding-left: 100px;
 }
 .sundhed-aktiv div:nth-of-type(2) {
   grid-column: 2/3;
   height: 500px;
-  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.sundhed-aktiv div:nth-of-type(2) img {
+  width: 100%;
+  position: absolute;
+}
+@media screen and (max-width: 700px) {
+  .sundhed-aktiv {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .sundhed-aktiv div:nth-of-type(1) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .sundhed-aktiv div:nth-of-type(2) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 300px;
+  }
 }
 
 /*About----------------------------------------------*/
-.about-hero div:nth-of-type(1) {
+.about-main {
+  background-color: #ffff82;
+}
+
+.about-hero .about-hero-img {
   margin-left: 100px;
   margin-right: 100px;
-  background-color: orange;
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.about-hero .about-hero-img img {
+  width: 100%;
+}
+@media screen and (max-width: 940px) {
+  .about-hero .about-hero-img {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .about-hero .about-hero-img {
+    align-items: start;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 .about-hero div:nth-of-type(2) {
   display: flex;
@@ -194,9 +445,21 @@ main {
   position: relative;
   top: -100px;
 }
-.about-hero div:nth-of-type(2) p {
+.about-hero div:nth-of-type(2) .about-box {
   max-width: 500px;
-  background-color: red;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(181, 181, 248);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media screen and (max-width: 750px) {
+  .about-hero div:nth-of-type(2) {
+    top: 0;
+    margin-bottom: 100px;
+  }
 }
 
 /*Footer---------------------------------------------*/
@@ -205,6 +468,18 @@ footer {
   grid-template-columns: 1fr 1fr;
   padding-top: 50px;
   padding-bottom: 50px;
+  background-color: rgb(211, 57, 57);
+  color: white;
+  /*Media queries footer*/
+}
+footer a {
+  color: white;
+  font-style: italic;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+footer a:hover {
+  color: blue;
 }
 footer nav:nth-of-type(1) {
   grid-column: 1/2;
@@ -221,8 +496,27 @@ footer nav:nth-of-type(2) {
   flex-direction: column;
   gap: 20px;
   padding-right: 100px;
-  padding-left: 50px;
   justify-content: start;
+}
+@media screen and (max-width: 500px) {
+  footer {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  footer nav:nth-of-type(1) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  footer nav:nth-of-type(2) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }
 
 /*FONT SIZES-----------------------------------------*/
@@ -231,6 +525,17 @@ h1 {
   font-weight: 400;
   font-style: normal;
   font-size: 1.4rem;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+}
+
+h2 {
+  font-family: "Diplomata SC", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+  -webkit-hyphens: auto;
+          hyphens: auto;
 }
 
 /*CLASSES------------------------------------------*/
@@ -244,5 +549,23 @@ h1 {
   text-decoration: none;
 }
 .cta:hover {
-  background-color: #AB6A08;
+  background-color: white;
+  color: black;
+}
+
+section:not(:first-of-type) {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+@media screen and (max-width: 900px) {
+  section:not(:first-of-type) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 700px) {
+  section:not(:first-of-type) {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }/*# sourceMappingURL=hundeportal.css.map */
